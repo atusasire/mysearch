@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  category: MyString
+  district: MyString
+  village: MyString
+  contact: MyString
+  description: MyText
+
+two:
+  name: MyString
+  type: 
+  category: MyString
+  district: MyString
+  village: MyString
+  contact: MyString
+  description: MyText

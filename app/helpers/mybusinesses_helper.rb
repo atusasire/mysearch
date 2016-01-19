@@ -1,0 +1,2 @@
+module MybusinessesHelper
+end
