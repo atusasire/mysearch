@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160119194409) do
 
   create_table "mybusinesses", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "type_of"
     t.string   "category"
     t.string   "district"
     t.string   "village"

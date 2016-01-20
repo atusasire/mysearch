@@ -4,7 +4,11 @@ class MybusinessesController < ApplicationController
   # GET /mybusinesses
   # GET /mybusinesses.json
   def index
-    @mybusinesses = Mybusiness.all
+    if params[:search]
+      @mybusinesses = Mybusiness.search(params[:search]).order("created_at DESC")
+    else
+      @mybusinesses = Mybusiness.all.order('created_at DESC')
+    end
   end
 
   # GET /mybusinesses/1
@@ -69,6 +73,6 @@ class MybusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mybusiness_params
-      params.require(:mybusiness).permit(:name, :type, :category, :district, :village, :contact, :description)
+      params.require(:mybusiness).permit(:name, :type_of, :category, :district, :village, :contact, :description)
     end
 end

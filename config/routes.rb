@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/myadmin', as: 'rails_admin'
   resources :mybusinesses
   root 'home#index'
 

@@ -1,78 +1,21 @@
-<%= form_for_filterrific @filterrific do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-  <div>
-    Country
-    <%= f.select(
-      :with_country_id,
-      @filterrific.select_options[:with_country_id],
-      { include_blank: '- Any -' }
-    ) %>
-  </div>
-  <div>
-    Registered after
-    <%= f.text_field(:with_created_at_gte, class: 'js-datepicker') %>
-  </div>
-  <div>
-    Sorted by
-    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-  </div>
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
-  <%# add an automated spinner to your form when the list is refreshed %>
-  <%= render_filterrific_spinner %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<%if notice %><p id="notice"><%= notice %></p><% end %>
+				<% if @mybusinesses.present? %>
+				    <% @mybusinesses.each do |mybusiness| %>
 
-<%= render(
-  partial: 'students/list',
-  locals: { students: @students }
-) %>
-<p id="notice"><%= notice %></p>
+				        <legend><h3><%= mybusiness.name %></h3></legend>
+				        <b class="badge"><%= mybusiness.district %></b>
+				        <b class="badge"><%= mybusiness.village %></b>
+				        <b class="badge"><%= mybusiness.contact %></b>
+				        <p><%= mybusiness.description %></p>
 
-<h1>Listing Mybusinesses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Category</th>
-      <th>District</th>
-      <th>Village</th>
-      <th>Contact</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @mybusinesses.each do |mybusiness| %>
-      <tr>
-        <td><%= mybusiness.name %></td>
-        <td><%= mybusiness.type %></td>
-        <td><%= mybusiness.category %></td>
-        <td><%= mybusiness.district %></td>
-        <td><%= mybusiness.village %></td>
-        <td><%= mybusiness.contact %></td>
-        <td><%= mybusiness.description %></td>
-        <td><%= link_to 'Show', mybusiness %></td>
-        <td><%= link_to 'Edit', edit_mybusiness_path(mybusiness) %></td>
-        <td><%= link_to 'Destroy', mybusiness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+				    <% end %>
+				<% else %>
+			    <p>No search items</p>
+			<% end %>
+		</div>
+	</div>
+</div>
 <%= link_to 'New Mybusiness', new_mybusiness_path %>
