@@ -6,10 +6,12 @@
 				    <% @mybusinesses.each do |mybusiness| %>
 
 				        <legend><h3><%= mybusiness.name %></h3></legend>
-				        <b class="badge"><%= mybusiness.district %></b>
+				        <b class="badge "><%= mybusiness.district %></b>
 				        <b class="badge"><%= mybusiness.village %></b>
 				        <b class="badge"><%= mybusiness.contact %></b>
-				        <p><%= mybusiness.description %></p>
+				        <p>
+				        <%= truncate(mybusiness.description, length:200)%>
+				        </p>
 
 				    <% end %>
 				<% else %>
