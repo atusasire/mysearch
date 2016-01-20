@@ -2,14 +2,15 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
 			<%if notice %><p id="notice"><%= notice %></p><% end %>
+				<h3>Search results </h3>
 				<% if @mybusinesses.present? %>
 				    <% @mybusinesses.each do |mybusiness| %>
 
-				        <legend><h3><%= mybusiness.name %></h3></legend>
+				        <legend><h4><%= mybusiness.name %></h4></legend>
 				        <b class="badge "><%= mybusiness.district %></b>
 				        <b class="badge"><%= mybusiness.village %></b>
 				        <b class="badge"><%= mybusiness.contact %></b>
-				        <p>
+				        <p class="well well-sm">
 				        <%= truncate(mybusiness.description, length:200)%>
 				        </p>
 
